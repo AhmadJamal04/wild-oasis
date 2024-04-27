@@ -11,22 +11,24 @@ import Users from "./pages/Users";
 import PageNotFound from "./pages/PageNotFound";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
+import { Toaster } from "react-hot-toast";
+import CreateCabinForm from "./features/cabins/CreateCabinForm";
 
-const queryClient= new QueryClient({
-  defaultOptions:{
-    queries:{
-      staleTime:60*1000,
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 0,
     },
   },
-})
+});
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false}/>
+      <ReactQueryDevtools initialIsOpen={false} />
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route element={<AppLayout/>}>
+          <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="accounts" element={<Account />} />
@@ -39,8 +41,23 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-      </QueryClientProvider>
-    
+      <Toaster
+        position="top-center"
+        gutter={12}
+        containerStyle={{ margin: "8px" }}
+        toastOptions={{
+          success: { duration: 3000 },
+          error: { duration: 5000 },
+          style: {
+            fontSize: "16px",
+            maxWidth: "500px",
+            padding: "16px 24px",
+            backgroundColor: "var(--color-grey-0)",
+            color:"var(--color-grey-700)"
+          },
+        }}
+      />
+    </QueryClientProvider>
   );
 }
 
