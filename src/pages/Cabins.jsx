@@ -15,7 +15,7 @@ function Cabins() {
         <p>filter/sort</p>
       </Row>
       <Row>
-        <CabinTable/>
+        <CabinTable setShowForm={setShowForm} showForm={showForm}/>
       </Row>
       <Button variation="primary" onClick={()=>setShowForm(show=>!show)}>add new cabin</Button>
       {showForm && <CreateCabinForm setShowForm={setShowForm} showForm={showForm}/>}
