@@ -12,7 +12,7 @@ import PageNotFound from "./pages/PageNotFound";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./ui/AppLayout";
 import { Toaster } from "react-hot-toast";
-import CreateCabinForm from "./features/cabins/CreateCabinForm";
+
 
 const queryClient = new QueryClient({
   defaultOptions: {
