@@ -9,6 +9,7 @@ import CreateCabinForm from "../features/cabins/CreateCabinForm";
 function Cabins() {
   const[showForm,setShowForm]=useState(false)
   return (
+    
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
@@ -18,7 +19,8 @@ function Cabins() {
         <CabinTable setShowForm={setShowForm} showForm={showForm}/>
       </Row>
       <Button variation="primary" onClick={()=>setShowForm(show=>!show)}>add new cabin</Button>
-      {showForm && <CreateCabinForm setShowForm={setShowForm} showForm={showForm}/>}
+      
+      {showForm && <CreateCabinForm />} 
     </>
   );
 }
