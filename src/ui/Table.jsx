@@ -63,18 +63,18 @@ const Empty = styled.p`
 
 const TableContext = createContext();
 function Table({ columns, children }) {
-  console.log(columns)
+  console.log(columns);
   return (
-    <TableContext.Provider value={{columns}}>
+    <TableContext.Provider value={{ columns }}>
       <StyledTable role="table">{children}</StyledTable>
     </TableContext.Provider>
   );
 }
 function Header({ children }) {
-  const {columns}  = useContext(TableContext);
- 
+  const { columns } = useContext(TableContext);
+
   return (
-    <StyledHeader role="row" columns={columns}>
+    <StyledHeader role="row" columns={columns} as="header">
       {children}
     </StyledHeader>
   );
@@ -87,7 +87,10 @@ function Row({ children }) {
     </StyledRow>
   );
 }
-function Body() {}
+function Body({ data, render }) {
+  if (!data.length) return <Empty>no data to show at this moment</Empty>;
+  return <StyledBody>{data.map(render)}</StyledBody>;
+}
 
 Table.Header = Header;
 Table.Row = Row;
