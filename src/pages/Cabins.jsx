@@ -3,18 +3,20 @@ import Row from "../ui/Row";
 import CabinTable from "../features/cabins/CabinTable";
 
 import AddCabin from "../features/cabins/AddCabin";
+import CabinTableOPeration from "../features/cabins/CabinTableOPeration";
 
 function Cabins() {
   return (
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
-        <p>filter/sort</p>
+        <CabinTableOPeration />
       </Row>
       <Row>
         <CabinTable />
+        <AddCabin />
       </Row>
-      <AddCabin />
+      
     </>
   );
 }
